@@ -1,26 +1,30 @@
 require("pry")
 
 class Doctor
-  attr_reader :name, :speciality, :id
+  attr_reader :name, :specialty, :id
 
   def initialize(attributes)
     @name = attributes[:name]
-    @speciality = attributes[:speciality]
+    @specialty = attributes[:specialty]
     DB.exec("INSERT INTO doctors (name, specialty) VALUES ('#{@name}', '#{@specialty}')")
     result = DB.exec("SELECT id FROM doctors WHERE name='#{@name}'")
     @id = result[0].fetch("id").to_i
   end
 
-  # def self.read_all
-  #   returned_doctors = DB.exec("SELECT * FROM doctors;")
-  #   doctors = []
-  #   returned_doctors.each() do |doctor|
-  #     name = doctor.fetch("name")
-  #     speciality = doctor.fetch("speciality")
-  #     doctor.push(Doctor.new({:name => name, :speciality => speciality}))
-  #   end
-  #   return doctor
-  # end
+  def self.read_all
+    returned_doctors = DB.exec("SELECT * FROM doctors;")
+    doctors = []
+    returned_doctors.each() do |doctor|
+      name = doctor.fetch("name")
+      specialty = doctor.fetch("specialty")
+      doctors.push(Doctor.new({:name => name, :specialty => specialty}))
+    end
+    return doctors
+  end
+
+  def ==(other_doctor)
+    @name == other_doctor.name
+  end
 end
 
 #   def self.remove_all

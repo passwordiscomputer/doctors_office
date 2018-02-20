@@ -14,14 +14,15 @@ end
 describe('Doctor') do
   describe('#initialize') do
     it('creates new doctor instance') do
-      doctor = Doctor.new({:name =>'rodger', :speciality => 'backs'})
+      doctor = Doctor.new({:name =>'rodger', :specialty => 'backs'})
       expect(doctor.name).to(eq('rodger'))
-      expect(doctor.speciality).to(eq('backs'))
+      expect(doctor.specialty).to(eq('backs'))
     end
     describe('#read_all') do
     it('select all doctor instances from database') do
-      doctor = Doctor.new({:name =>'rodger', :speciality => 'backs'})
-      expect(Doctor.all.include?(doctor)).to(eq(true))
+      doctor = Doctor.new({:name =>'rodger', :specialty => 'backs'})
+      binding.pry
+      expect(Doctor.read_all.include?(doctor)).to(eq(true))
     end
   end
 end
