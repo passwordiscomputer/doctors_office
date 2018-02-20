@@ -23,7 +23,7 @@ class Doctor
   end
 
   def ==(other_doctor)
-    @name == other_doctor.name
+    @id == other_doctor.id
   end
 end
 
