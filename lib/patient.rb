@@ -11,4 +11,13 @@ class Patient
    result = DB.exec("SELECT id FROM patients WHERE name='#{@name}'")
    @id = result[0].fetch("id").to_i
  end
+
+ def ==(other_patient)
+   @id == other_patient.id
+ end
+
+ # def set_doctor(doctor)
+ #   @doctor_id = doctor.id
+ #   DB.exec("UPDATE patients SET doctor_id = #{@doctor_id} WHERE id = #{@id}")
+ # end
 end

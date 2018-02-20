@@ -21,7 +21,6 @@ describe('Doctor') do
     describe('#read_all') do
     it('select all doctor instances from database') do
       doctor = Doctor.new({:name =>'rodger', :specialty => 'backs'})
-      binding.pry
       expect(Doctor.read_all.include?(doctor)).to(eq(true))
     end
   end

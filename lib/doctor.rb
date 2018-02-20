@@ -27,6 +27,7 @@ class Doctor
   end
 end
 
+
 #   def self.remove_all
 #     DB.exec("DELETE FROM cards *;")
 #   end

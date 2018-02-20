@@ -18,13 +18,14 @@ describe('Patient') do
       expect(patient.name).to(eq('russell'))
       expect(patient.birth).to(eq('1995-10-23'))
     end
-  #   describe('#read_all') do
-  #   it('select all patient instances from database') do
-  #     patient = patient.new({:name =>'rodger', :specialty => 'backs'})
-  #     binding.pry
-  #     expect(patient.read_all.include?(patient)).to(eq(true))
-  #   end
-  # end
+    describe('#set_doctor') do
+    it('set doctor and update database') do
+      doctor = Doctor.new({:name =>'rodger', :specialty => 'backs'})
+      patient = Patient.new({:name =>'russell', :birth => '1995-10-23'})
+      patient.set_doctor(doctor)
+      expect(patient.doctor_id).to(eq(doctor.id))
+    end
+  end
 end
 
   # describe('#==') do
