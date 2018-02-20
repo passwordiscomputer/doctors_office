@@ -31,6 +31,14 @@ describe('Doctor') do
       end
     end
   end
+  describe('#remove_all') do
+    it('removes all rows from doctors table') do
+      doctor = Doctor.new({:name =>'rodger', :specialty => 'backs'})
+      doctor.create
+      Doctor.remove_all
+      expect(Doctor.read_all).to(eq([]))
+    end
+  end
 end
 
   # describe('#==') do
@@ -40,18 +48,7 @@ end
   #     expect(card1==card2).to(eq(true))
   #   end
   # end
-  #
-  # describe('#create') do
-  #   it('creates card to database') do
-  #     card1 = Card.new({:front =>'front1', :back => 'back1'})
-  #     card2 = Card.new({:front =>'front2', :back => 'back2'})
-  #     card1.create
-  #     card1.create
-  #     expect(Card.read_all.include?(card1)).to(eq(true));
-  #     expect(Card.read_all.include?(card2)).to(eq(false));
-  #   end
-  # end
-  #
+
   # describe('#remove_all') do
   #   it('removes all rows from card table') do
   #     card1 = Card.new({:front =>'front1', :back => 'back1'})

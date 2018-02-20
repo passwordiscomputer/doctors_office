@@ -25,6 +25,22 @@ class Doctor
   def ==(other_doctor)
     @id == other_doctor.id
   end
+
+    def create
+      already_there = false
+      doctor = Doctor.read_all
+      doctor.each do |doctor|
+        already_there = true if self==doctor
+      end
+      if !already_there
+        DB.exec("INSERT INTO doctors (name, specialty) VALUES ('#{@name}', '#{@specialty}');")
+        result = DB.exec("SELECT id FROM doctors WHERE name = '#{@name}' AND specialty = '#{@specialty}';")
+        @id = result[0].fetch('id').to_i
+      end
+    end
+   def self.remove_all
+    DB.exec("DELETE FROM doctors *;")
+   end
 end
 
 
@@ -35,20 +51,7 @@ end
 #   def ==(other_card)
 #     (@front == other_card.front) && (@back == other_card.back)
 #   end
-#
-#   def create
-#     already_there = false
-#     cards = Card.read_all
-#     cards.each do |card|
-#       already_there = true if self==card
-#     end
-#     if !already_there
-#       DB.exec("INSERT INTO cards (front, back) VALUES ('#{@front}', '#{@back}');")
-#       result = DB.exec("SELECT id FROM cards WHERE front = '#{@front}' AND back = '#{@back}';")
-#       @id = result[0].fetch('id').to_i
-#     end
-#   end
-#
+
 #   def update
 #     DB.exec("UPDATE cards SET front = '#{@front}', back = '#{@back}' WHERE id=#{@id};")
 #   end
