@@ -1,15 +1,15 @@
 require 'rspec'
 require 'pg'
 require 'pry'
-require 'clinic'
+require 'doctor'
 
-# DB = PG.connect({:dbname => 'flashcards_test'})
-#
-# RSpec.configure do |config|
-#   config.after(:each) do
-#     DB.exec("DELETE FROM cards *;")
-#   end
-# end
+DB = PG.connect({:dbname => 'clinic_test'})
+
+RSpec.configure do |config|
+  config.after(:each) do
+    DB.exec("DELETE FROM doctors *;")
+  end
+end
 
 describe('Doctor') do
   describe('#initialize') do
@@ -18,7 +18,13 @@ describe('Doctor') do
       expect(doctor.name).to(eq('rodger'))
       expect(doctor.speciality).to(eq('backs'))
     end
+    describe('#read_all') do
+    it('select all doctor instances from database') do
+      doctor = Doctor.new({:name =>'rodger', :speciality => 'backs'})
+      expect(Doctor.all.include?(doctor)).to(eq(true))
+    end
   end
+end
 
   # describe('#==') do
   #   it('returns true if card fronts are the same') do

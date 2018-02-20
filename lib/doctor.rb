@@ -6,28 +6,23 @@ class Doctor
   def initialize(attributes)
     @name = attributes[:name]
     @speciality = attributes[:speciality]
+    DB.exec("INSERT INTO doctors (name, specialty) VALUES ('#{@name}', '#{@specialty}')")
+    result = DB.exec("SELECT id FROM doctors WHERE name='#{@name}'")
+    @id = result[0].fetch("id").to_i
   end
+
+  # def self.read_all
+  #   returned_doctors = DB.exec("SELECT * FROM doctors;")
+  #   doctors = []
+  #   returned_doctors.each() do |doctor|
+  #     name = doctor.fetch("name")
+  #     speciality = doctor.fetch("speciality")
+  #     doctor.push(Doctor.new({:name => name, :speciality => speciality}))
+  #   end
+  #   return doctor
+  # end
 end
 
-# class Card
-#   attr_accessor :front, :back, :id
-#
-#   def initialize(attributes)
-#     @front = attributes[:front]
-#     @back = attributes[:back]
-#   end
-#
-#   def self.read_all
-#     returned_cards = DB.exec("SELECT * FROM cards;")
-#     cards = []
-#     returned_cards.each() do |card|
-#       front = card.fetch("front")
-#       back = card.fetch("back")
-#       cards.push(Card.new({:front => front, :back => back}))
-#     end
-#     return cards
-#   end
-#
 #   def self.remove_all
 #     DB.exec("DELETE FROM cards *;")
 #   end
