@@ -1,22 +1,22 @@
 require 'rspec'
 require 'pg'
 require 'pry'
-require 'card'
+require 'clinic'
 
-DB = PG.connect({:dbname => 'flashcards_test'})
+# DB = PG.connect({:dbname => 'flashcards_test'})
+#
+# RSpec.configure do |config|
+#   config.after(:each) do
+#     DB.exec("DELETE FROM cards *;")
+#   end
+# end
 
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM cards *;")
-  end
-end
-
-describe('Card') do
+describe('Doctor') do
   describe('#initialize') do
-    it('creates new card instance') do
-      card = Card.new({:front =>'term', :back => 'definition'})
-      expect(card.front).to(eq('term'))
-      expect(card.back).to(eq('definition'))
+    it('creates new doctor instance') do
+      doctor = Doctor.new({:name =>'rodger', :speciality => 'backs'})
+      expect(doctor.name).to(eq('rodger'))
+      expect(doctor.speciality).to(eq('backs'))
     end
   end
 

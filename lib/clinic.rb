@@ -1,5 +1,14 @@
 require("pry")
 
+class Doctor
+  attr_reader :name, :speciality, :id
+
+  def initialize(attributes)
+    @name = attributes[:name]
+    @speciality = attributes[:speciality]
+  end
+end
+
 # class Card
 #   attr_accessor :front, :back, :id
 #

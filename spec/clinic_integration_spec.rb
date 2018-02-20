@@ -1,7 +1,7 @@
-require 'capybara/rspec'
-require './app'
-Capybara.app = Sinatra::Application
-set(:show_exceptions, false)
+# require 'capybara/rspec'
+# require './app'
+# Capybara.app = Sinatra::Application
+# set(:show_exceptions, false)
 
 # describe('flashcards page', {:type => :feature}) do
 #   it('creates and displays new cards') do
