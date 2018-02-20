@@ -16,8 +16,8 @@ class Patient
    @id == other_patient.id
  end
 
- # def set_doctor(doctor)
- #   @doctor_id = doctor.id
- #   DB.exec("UPDATE patients SET doctor_id = #{@doctor_id} WHERE id = #{@id}")
- # end
+ def set_doctor(doctor)
+   @doctor_id = doctor.id
+   DB.exec("UPDATE patients SET doctor_id = #{@doctor_id} WHERE id = #{@id}")
+ end
 end

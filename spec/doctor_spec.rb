@@ -23,6 +23,13 @@ describe('Doctor') do
       doctor = Doctor.new({:name =>'rodger', :specialty => 'backs'})
       expect(Doctor.read_all.include?(doctor)).to(eq(true))
     end
+    describe('#create') do
+      it('creates doctor to database') do
+        doctor = Doctor.new({:name =>'rodger', :specialty => 'backs'})
+        doctor.create
+        expect(Doctor.read_all.include?(doctor)).to(eq(true));
+      end
+    end
   end
 end
 
