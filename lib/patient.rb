@@ -12,12 +12,17 @@ class Patient
    @id = result[0].fetch("id").to_i
  end
 
- def ==(other_patient)
+  def ==(other_patient)
    @id == other_patient.id
- end
+  end
 
- def set_doctor(doctor)
+  def set_doctor(doctor)
    @doctor_id = doctor.id
    DB.exec("UPDATE patients SET doctor_id = #{@doctor_id} WHERE id = #{@id}")
- end
+  end
+
+  def self.remove_all
+   DB.exec("DELETE FROM patients *;")
+  end
+
 end

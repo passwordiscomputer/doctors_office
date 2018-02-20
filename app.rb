@@ -1,14 +1,15 @@
-# #!/home/linuxbrew/.linuxbrew/bin/env ruby
-# require 'sinatra'
-# require 'sinatra/reloader'
-# require 'pry'
-# also_reload('lib/**/*.rb')
-# require './lib/card'
-# require 'pg'
-#
-# DB = PG.connect({:dbname => 'flashcards_test'})
-# Card.remove_all
-#
+#!/home/linuxbrew/.linuxbrew/bin/env ruby
+require 'sinatra'
+require 'sinatra/reloader'
+require 'pry'
+also_reload('lib/**/*.rb')
+require './lib/patient'
+require 'pg'
+
+DB = PG.connect({:dbname => 'clinic'})
+Doctor.remove_all
+Patient.remove_all
+
 # get('/') do
 #   @cards = Card.read_all
 #   erb(:flashcards)

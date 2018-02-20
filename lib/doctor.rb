@@ -38,9 +38,15 @@ class Doctor
         @id = result[0].fetch('id').to_i
       end
     end
+
    def self.remove_all
     DB.exec("DELETE FROM doctors *;")
    end
+
+   def update
+    DB.exec("UPDATE doctors SET name = '#{@name}', specialty = '#{@specialty}' WHERE id=#{@id};")
+   end
+
 end
 
 

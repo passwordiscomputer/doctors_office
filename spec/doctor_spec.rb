@@ -39,6 +39,17 @@ describe('Doctor') do
       expect(Doctor.read_all).to(eq([]))
     end
   end
+  describe('#update') do
+    it('updates doctor in doctors table') do
+      doctor = Doctor.new({:name => 'rodger', :specialty => 'backs'})
+      doctor.create
+      name = 'new name'
+      specialty = 'new specialty'
+      expect(Doctor.read_all.include?(doctor)).to(eq(true))
+      doctor.update
+      expect(Doctor.read_all.include?(doctor)).to(eq(false))
+    end
+  end
 end
 
   # describe('#==') do
