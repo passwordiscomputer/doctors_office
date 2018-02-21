@@ -20,10 +20,9 @@ describe('Patient') do
     end
     describe('#set_doctor') do
     it('set doctor and update database') do
-      doctor = Doctor.new({:name =>'rodger', :specialty => 'backs'})
       patient = Patient.new({:name =>'russell', :birth => '1995-10-23'})
-      patient.set_doctor(doctor)
-      expect(patient.doctor_id).to(eq(doctor.id))
+      patient.set_doctor(2)
+      expect(patient.doctor_id).to(eq(2))
     end
   end
 end

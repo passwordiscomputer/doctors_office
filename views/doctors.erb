@@ -1,0 +1,12 @@
+<div class="jumbotron">
+  <h1>Doctor List</h1>
+
+</div>
+
+<% if @doctors.any?() %>
+  <ul>
+  <% @doctors.each do |doctor| %>
+    <li><a href="doctor/<%= doctor.id %>"><%= doctor.name %></a></li>
+  <%end%>
+  </ul>
+<% end %>

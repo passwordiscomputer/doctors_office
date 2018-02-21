@@ -1,0 +1,43 @@
+<h1>Admin Home Page</h1>
+
+<h2>Doctors</h2>
+<div class="jumbotron">
+  <form action="/doctors" method="post">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" name="name" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+      <label for="specialty">Speciality:</label>
+      <input id="specialty" name="specialty" class="form-control" type="text">
+    </div>
+    <button type="submit" class="btn-primary">Go!</button>
+  </form>
+</div>
+
+<h2>Patients</h2>
+<div class="jumbotron">
+  <form action="/patients" method="post">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" name="name" class="form-control" type="text">
+    </div>
+    <div class="form-group">
+      <label for="birth">Birth Date:</label>
+      <input id="birth" name="birth" class="form-control" type="date">
+    </div>
+    <% if @doctors.any?() %>
+      <p>Click on a doctor to see its tasks:</p>
+      <label for="doctor_id">Select a List</label>
+      <select id='doctor_id' name='doctor_id' type='text'>
+      <option value="<%=nil%>"> Select Later </option>
+      <% @doctors.each do |doctor| %>
+          <option value="<%= doctor.id()%>"> <%= doctor.name() %> </option>
+        <% end %>
+      </select>
+    <% else %>
+      <input name="doctor_id" class="form-control"  type="hidden" value=<%= nil %>>
+    <% end %>
+    <button type="submit" class="btn-primary">Go!</button>
+  </form>
+</div>

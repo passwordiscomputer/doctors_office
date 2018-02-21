@@ -50,6 +50,13 @@ describe('Doctor') do
       expect(Doctor.read_all.include?(doctor)).to(eq(false))
     end
   end
+  describe(".find") do
+    it("returns a list by its ID") do
+      doctor = Doctor.new({:name => 'rodger', :specialty => 'backs'})
+      doctor.create
+      expect(Doctor.find(doctor.id())).to(eq(doctor))
+    end
+  end
 end
 
   # describe('#==') do
